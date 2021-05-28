@@ -14,13 +14,15 @@ public class UserController {
     public DatabaseAccess da;
 
     @PostMapping("/user/login")
-    public boolean isValid(@RequestBody User user) {
+    public String isValid(@RequestBody User user) {
         User selectedUser = da.getUserByEmail(user.getEmail());
-
+        boolean valid;
         if (user.getEmail().equals(selectedUser.getEmail()) && user.getPassword().equals(selectedUser.getPassword())) {
-            return true;
+            valid = true;
         } else {
-            return false;
+            valid = false;
         }
+
+        return "{\"isValid\":" + valid+"}";
     }
 }

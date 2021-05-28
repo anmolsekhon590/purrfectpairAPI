@@ -57,7 +57,7 @@ public class DatabaseAccess {
 
     public User getUserByEmail(String email) {
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-        String query = "SELECT * From PET WHERE email=:email";
+        String query = "SELECT * From USER WHERE email = :email";
         namedParameters.addValue("email", email);
 
         return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<User>(User.class)).get(0);
