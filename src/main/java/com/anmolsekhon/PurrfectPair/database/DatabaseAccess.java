@@ -44,4 +44,13 @@ public class DatabaseAccess {
 
         jdbc.update(query, namedParameters);
     }
+
+    public void deletePet(Long id) {
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+        String query = "DELETE FROM PET WHERE id = :id";
+
+        namedParameters.addValue("id", id);
+
+        jdbc.update(query, namedParameters);
+    }
 }

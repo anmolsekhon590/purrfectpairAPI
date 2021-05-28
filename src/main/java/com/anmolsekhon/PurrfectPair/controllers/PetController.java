@@ -46,4 +46,11 @@ public class PetController {
         da.updatePet(pet);
         return "Pet Updated Successfully";
     }
+
+    @DeleteMapping("/pets/{id}")
+    public String deletePet(@PathVariable Long id) {
+        da.deletePet(id);
+
+        return "Pet Deleted Successfully";
+    }
 }
