@@ -22,4 +22,14 @@ public class DatabaseAccess {
         return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<Pet>(Pet.class));
     }
 
+    public void addPet(Pet pet) {
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+        String query = "INSERT INTO PET VALUES(NULL, :name, :type, :gender)";
+
+        namedParameters.addValue("name", pet.getName())
+                .addValue("type", pet.getType())
+                .addValue("gender", pet.getGender());
+
+        jdbc.update(query, namedParameters);
+    }
 }

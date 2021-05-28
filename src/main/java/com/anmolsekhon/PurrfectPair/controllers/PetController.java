@@ -4,9 +4,7 @@ import com.anmolsekhon.PurrfectPair.beans.Pet;
 import com.anmolsekhon.PurrfectPair.database.DatabaseAccess;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,5 +28,16 @@ public class PetController {
             json = "{}";
         }
         return json;
+    }
+
+    @PostMapping("/pets")
+    public String addPet(@RequestBody Pet pet) {
+
+        try {
+            da.addPet(pet);
+        } catch (Exception e) {
+            System.out.println("Exception thrown: " + e.toString());
+        }
+        return "Pet Added Successfully";
     }
 }
