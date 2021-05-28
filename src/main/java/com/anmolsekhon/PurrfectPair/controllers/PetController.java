@@ -40,4 +40,10 @@ public class PetController {
         }
         return "Pet Added Successfully";
     }
+
+    @PutMapping("/pets/{id}")
+    public String updatePet(@RequestBody Pet pet, @PathVariable Long id) {
+        da.updatePet(pet);
+        return "Pet Updated Successfully";
+    }
 }

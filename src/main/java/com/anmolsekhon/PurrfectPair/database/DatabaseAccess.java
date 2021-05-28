@@ -32,4 +32,16 @@ public class DatabaseAccess {
 
         jdbc.update(query, namedParameters);
     }
+
+    public void updatePet(Pet pet) {
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+        String query = "UPDATE PET SET name = :name, type = :type, gender = :gender WHERE id = :id";
+
+        namedParameters.addValue("id", pet.getId())
+                .addValue("name", pet.getName())
+                .addValue("type", pet.getType())
+                .addValue("gender", pet.getGender());
+
+        jdbc.update(query, namedParameters);
+    }
 }
