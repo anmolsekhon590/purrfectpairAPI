@@ -15,11 +15,16 @@ public class UserController {
 
     @PostMapping("/user/login")
     public String isValid(@RequestBody User user) {
-        User selectedUser = da.getUserByEmail(user.getEmail());
         boolean valid;
-        if (user.getEmail().equals(selectedUser.getEmail()) && user.getPassword().equals(selectedUser.getPassword())) {
-            valid = true;
-        } else {
+        try {
+
+            User selectedUser = da.getUserByEmail(user.getEmail());
+            if ((user.getEmail().equals(selectedUser.getEmail()) && user.getPassword().equals(selectedUser.getPassword()) && selectedUser != null)) {
+                valid = true;
+            } else {
+                valid = false;
+            }
+        } catch (NullPointerException e) {
             valid = false;
         }
 

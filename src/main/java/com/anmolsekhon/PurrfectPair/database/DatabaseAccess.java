@@ -60,6 +60,14 @@ public class DatabaseAccess {
         String query = "SELECT * From USER WHERE email = :email";
         namedParameters.addValue("email", email);
 
-        return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<User>(User.class)).get(0);
+        User user = new User();
+        try {
+            user = jdbc.query(query, namedParameters, new BeanPropertyRowMapper<User>(User.class)).get(0);
+
+        } catch (Exception e) {
+            user = null;
+        }
+
+        return user;
     }
 }
