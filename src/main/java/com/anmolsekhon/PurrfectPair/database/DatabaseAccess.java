@@ -1,6 +1,7 @@
 package com.anmolsekhon.PurrfectPair.database;
 
 import com.anmolsekhon.PurrfectPair.beans.Pet;
+import com.anmolsekhon.PurrfectPair.beans.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -52,5 +53,13 @@ public class DatabaseAccess {
         namedParameters.addValue("id", id);
 
         jdbc.update(query, namedParameters);
+    }
+
+    public User getUserByEmail(String email) {
+        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+        String query = "SELECT * From PET WHERE email=:email";
+        namedParameters.addValue("email", email);
+
+        return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<User>(User.class)).get(0);
     }
 }

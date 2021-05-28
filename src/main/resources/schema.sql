@@ -4,3 +4,9 @@ CREATE TABLE PET(
     type VARCHAR,
     gender VARCHAR
 );
+
+CREATE TABLE USER(
+    id NUMERIC PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    email VARCHAR,
+    password VARCHAR
+);
