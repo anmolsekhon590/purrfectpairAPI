@@ -15,4 +15,8 @@ public class Pet implements Serializable {
     private String type;
     private String gender;
     private String hair;
+    private String breed;
+    private String age;
+    private String size;
+
 }
