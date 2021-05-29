@@ -1,8 +1,10 @@
 CREATE TABLE PET(
     id NUMERIC PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    userid NUMERIC,
     name VARCHAR,
     type VARCHAR,
-    gender VARCHAR
+    gender VARCHAR,
+    hair VARCHAR
 );
 
 CREATE TABLE USER(
