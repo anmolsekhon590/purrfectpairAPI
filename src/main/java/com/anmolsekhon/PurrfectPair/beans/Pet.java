@@ -10,7 +10,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Pet implements Serializable {
     private Long id;
+    private Long userid;
     private String name;
     private String type;
     private String gender;
+    private String hair;
 }

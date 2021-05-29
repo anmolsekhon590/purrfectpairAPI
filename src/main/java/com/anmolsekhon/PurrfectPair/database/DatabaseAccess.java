@@ -25,7 +25,7 @@ public class DatabaseAccess {
 
     public void addPet(Pet pet) {
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-        String query = "INSERT INTO PET VALUES(NULL, :name, :type, :gender)";
+        String query = "INSERT INTO PET VALUES(NULL, :userid, :name, :type, :gender, :hair)";
 
         namedParameters.addValue("name", pet.getName())
                 .addValue("type", pet.getType())
@@ -36,12 +36,14 @@ public class DatabaseAccess {
 
     public void updatePet(Pet pet) {
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-        String query = "UPDATE PET SET name = :name, type = :type, gender = :gender WHERE id = :id";
+        String query = "UPDATE PET SET userid = :userid, name = :name, type = :type, gender = :gender, hair = :hair WHERE id = :id";
 
         namedParameters.addValue("id", pet.getId())
+                .addValue("userid", pet.getUserid())
                 .addValue("name", pet.getName())
                 .addValue("type", pet.getType())
-                .addValue("gender", pet.getGender());
+                .addValue("gender", pet.getGender())
+                .addValue("hair", pet.getHair());
 
         jdbc.update(query, namedParameters);
     }
