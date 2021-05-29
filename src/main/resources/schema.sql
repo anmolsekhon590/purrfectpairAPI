@@ -4,7 +4,10 @@ CREATE TABLE PET(
     name VARCHAR,
     type VARCHAR,
     gender VARCHAR,
-    hair VARCHAR
+    hair VARCHAR,
+    breed VARCHAR,
+    age VARCHAR,
+    'size' VARCHAR
 );
 
 CREATE TABLE USER(
