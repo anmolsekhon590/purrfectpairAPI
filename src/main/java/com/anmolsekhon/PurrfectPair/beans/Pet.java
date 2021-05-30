@@ -18,5 +18,6 @@ public class Pet implements Serializable {
     private String breed;
     private String age;
     private String size;
-
+    private Double latitude;
+    private Double longitude;
 }

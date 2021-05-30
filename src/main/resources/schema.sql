@@ -7,7 +7,9 @@ CREATE TABLE PET(
     hair VARCHAR,
     breed VARCHAR,
     age VARCHAR,
-    size VARCHAR
+    size VARCHAR,
+    longitude NUMERIC,
+    latitude NUMERIC
 );
 
 CREATE TABLE USER(
